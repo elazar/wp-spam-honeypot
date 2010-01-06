@@ -36,7 +36,7 @@ function options_page_honeypot() {
 }
 
 function register_honeypot() {
-	add_option('hash_honeypot','default-hash');
+	add_option('hash_honeypot',sha1(uniqid(time(), true));
 }
 
 /*
