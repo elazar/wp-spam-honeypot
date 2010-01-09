@@ -14,29 +14,54 @@ ADMIN
 */
 
 if (is_admin()) {
-	add_action('admin_menu','menu_honeypot');
-	add_action('admin_init','init_honeypot');
-	register_activation_hook(__FILE__,'register_honeypot');
+	add_action('admin_menu', 'menu_honeypot');
+	add_action('admin_init', 'init_honeypot');
+    add_filter('plugin_action_links', 'add_action_link_honeypot', 10, 2);
+	register_activation_hook(__FILE__, 'register_honeypot');
 }
 
 function menu_honeypot() {
-	add_options_page('Honeypot Settings','Spam-Honeypot','administrator',__FILE__,'options_page_honeypot');
+	add_options_page('Honeypot Settings', 'Spam Honeypot', 'manage_options', 'spam-honeypot', 'options_page_honeypot');
 }
 
 function init_honeypot() {
-	if (function_exists('register_setting')) {
-		register_setting('options-honeypot', 'hash_honeypot');
-	}
+    register_setting('spam-honeypot', 'textarea_name');
+    register_setting('spam-honeypot', 'submit_name');
 }
 
-function options_page_honeypot() {
-	echo '<div class="wrap">';
-	echo '<p>Here is where the Honeypot options form will go.</p>';
-	echo '</div>';
+function add_action_link_honeypot($links, $file) {
+    if ($file == basename(__FILE__)) {
+        array_unshift($links, '<a href="options-general.php?page=spam-honeypot">' . __('Settings') . '</a>');
+    }
+    return $links;
 }
 
 function register_honeypot() {
-	add_option('hash_honeypot',sha1(uniqid(time(), true));
+	add_option('textarea_name', 'more_comment');
+	add_option('submit_name', '');
+}
+
+function options_page_honeypot() {
+?>
+<div class="wrap">
+<h2>Spam Honeypot Settings</h2>
+<form method="post" action="options.php">
+<?php wp_nonce_field('update-options'); ?>
+<?php settings_fields('spam-honeypot'); ?>
+<table class="form-table">
+<tr valign="top">
+<th scope="row"><?php _e('Hidden Textarea Name:'); ?></th>
+<td><input type="text" id="textarea_name" name="textarea_name" value="<?php echo get_option('textarea_name'); ?>" title="This field controls the name of a hidden (by CSS) textarea injected into your comment form by the plugin. If a bot fills this field out, the post will be tagged as spam."></td>
+</tr>
+<tr valign="top">
+<th scope="row"><?php _e('Submit Button Name:'); ?></th>
+<td><input type="text" id="submit_name" name="submit_name" value="<?php echo get_option('submit_name'); ?>" title="This field should be set to the value of the &quot;name&quot; attribute for the submit button in your comment form. If a bot does not include this in a form submission, the post will be tagged as spam. If this field is left blank, the check will not be conducted."></td>
+</tr>
+</table>
+<p class="submit"><input type="submit" class="button-primary" value="<?php echo __('Update Options'); ?>"></p>
+</form>
+</div>
+<?php
 }
 
 /*
@@ -47,14 +72,17 @@ add_action('comment_form', 'add_honeypot');
 add_filter('pre_comment_approved', 'check_honeypot');
 
 function add_honeypot($postID) {
-	$hash = get_option('hash_honeypot');
-	echo '<textarea name="'.$hash.'" style="display: none;"></textarea>';
+    $textarea_name = get_option('textarea_name');
+	echo '<textarea name="' . $textarea_name . '" cols="100%" rows="10" style="display: none;"></textarea>';
 }
 
 function check_honeypot($approved) {
-	$hash = get_option('hash_honeypot');
-	if (!empty($_POST[$hash])) {
+    $textarea_name = get_option('textarea_name');
+	$submit_name = get_option('submit_name');
+	if (!empty($_POST[$textarea_name]) // Bot filled out the hidden textarea
+        || (!empty($submit_name) // User specified a value for the submit button
+        && empty($_POST[$submit_name]))) { // Bot didn't include a value for the submit button 
 		$approved = 'spam';
-	}
+    }
 	return $approved;
 }
