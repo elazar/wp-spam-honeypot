@@ -73,7 +73,11 @@ add_filter('pre_comment_approved', 'check_honeypot');
 
 function add_honeypot($postID) {
     $textarea_name = get_option('textarea_name');
-	echo '<textarea name="' . $textarea_name . '" cols="100%" rows="10" style="display: none;"></textarea>';
+	echo '<p style="display:none">';
+	echo '<textarea name="' . $textarea_name . '" cols="100%" rows="10"></textarea>';
+	echo '<label  for="' . $textarea_name . '">' . __('If you are a human, do not fill in this field.') . '</label>';	
+	echo '</p>';
+	
 }
 
 function check_honeypot($approved) {
