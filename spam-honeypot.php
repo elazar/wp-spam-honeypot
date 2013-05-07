@@ -54,7 +54,7 @@ function options_page_honeypot() {
 <td><input type="text" id="textarea_name" name="textarea_name" value="<?php echo get_option('textarea_name'); ?>" title="This field controls the name of a hidden (by CSS) textarea injected into your comment form by the plugin. If a bot fills this field out, the post will be tagged as spam."></td>
 </tr>
 <tr valign="top">
-<th scope="row"><?php _e('Submit Button Name:'); ?></th>
+<th scope="row"><?php _e('Submit Button Name (optional):'); ?></th>
 <td><input type="text" id="submit_name" name="submit_name" value="<?php echo get_option('submit_name'); ?>" title="This field should be set to the value of the &quot;name&quot; attribute for the submit button in your comment form. If a bot does not include this in a form submission, the post will be tagged as spam. If this field is left blank, the check will not be conducted."></td>
 </tr>
 </table>
