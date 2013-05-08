@@ -46,6 +46,7 @@ function register_honeypot() {
 }
 
 function options_page_honeypot() {
+load_plugin_textdomain( 'spam-honeypot', WP_PLUGIN_DIR .'/wp-spam-honeypot/languages', '/wp-spam-honeypot/languages' );
 ?>
 <div class="wrap">
 <h2>Spam Honeypot Settings</h2>
@@ -76,6 +77,7 @@ add_action('comment_form', 'add_honeypot');
 add_filter('pre_comment_approved', 'check_honeypot');
 
 function add_honeypot($postID) {
+	load_plugin_textdomain( 'spam-honeypot', WP_PLUGIN_DIR .'/wp-spam-honeypot/languages', '/wp-spam-honeypot/languages' );
     $textarea_name = get_option('textarea_name');
 	echo '<p style="display:none">';
 	echo '<textarea name="' . $textarea_name . '" cols="100%" rows="10"></textarea>';
