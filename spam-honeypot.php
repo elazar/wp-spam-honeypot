@@ -31,14 +31,18 @@ function init_honeypot() {
 
 function add_action_link_honeypot($links, $file) {
     if ($file == basename(__FILE__)) {
-        array_unshift($links, '<a href="options-general.php?page=spam-honeypot">' . __('Settings') . '</a>');
+        array_unshift($links, '<a href="options-general.php?page=spam-honeypot">' . __('Settings','spam-honeypot') . '</a>');
     }
     return $links;
 }
 
 function register_honeypot() {
 	add_option('textarea_name', 'more_comment');
+	//die("register_honeypot2: " . get_option('textarea_name'));
 	add_option('submit_name', '');
+	//die("register_honeypot3");
+	load_plugin_textdomain( 'spam-honeypot', false, dirname(plugin_basename(__FILE__)).'/languages/' );
+	//die("register_honepot4");
 }
 
 function options_page_honeypot() {
@@ -58,7 +62,7 @@ function options_page_honeypot() {
 <td><input type="text" id="submit_name" name="submit_name" value="<?php echo get_option('submit_name'); ?>" title="This field should be set to the value of the &quot;name&quot; attribute for the submit button in your comment form. If a bot does not include this in a form submission, the post will be tagged as spam. If this field is left blank, the check will not be conducted."></td>
 </tr>
 </table>
-<p class="submit"><input type="submit" class="button-primary" value="<?php echo __('Update Options'); ?>"></p>
+<p class="submit"><input type="submit" class="button-primary" value="<?php echo __('Update Options','spam-honeypot'); ?>"></p>
 </form>
 </div>
 <?php
@@ -75,7 +79,7 @@ function add_honeypot($postID) {
     $textarea_name = get_option('textarea_name');
 	echo '<p style="display:none">';
 	echo '<textarea name="' . $textarea_name . '" cols="100%" rows="10"></textarea>';
-	echo '<label  for="' . $textarea_name . '">' . __('If you are a human, do not fill in this field.') . '</label>';	
+	echo '<label  for="' . $textarea_name . '">' . __('If you are a human, do not fill in this field.','spam-honeypot') . '</label>';	
 	echo '</p>';
 	
 }
