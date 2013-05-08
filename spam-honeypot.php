@@ -41,7 +41,7 @@ function register_honeypot() {
 	//die("register_honeypot2: " . get_option('textarea_name'));
 	add_option('submit_name', '');
 	//die("register_honeypot3");
-	load_plugin_textdomain( 'spam-honeypot', false, dirname(plugin_basename(__FILE__)).'/languages/' );
+	load_plugin_textdomain( 'spam-honeypot', WP_PLUGIN_DIR .'/wp-spam-honeypot/languages', '/wp-spam-honeypot/languages' );
 	//die("register_honepot4");
 }
 
