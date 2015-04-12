@@ -12,34 +12,39 @@ Domain Path: /languages/
 */
 
 if (is_admin()) {
-	add_action('admin_menu', 'menu_honeypot');
-	add_action('admin_init', 'init_honeypot');
-	add_filter('plugin_action_links', 'add_action_link_honeypot', 10, 2);
-	register_activation_hook(__FILE__, 'register_honeypot');
+    add_action('admin_menu', 'menu_honeypot');
+    add_action('admin_init', 'init_honeypot');
+    add_filter('plugin_action_links', 'add_action_link_honeypot', 10, 2);
+    register_activation_hook(__FILE__, 'register_honeypot');
 }
 
-function menu_honeypot() {
-	add_options_page(__('Honeypot Settings', 'spam-honeypot'), __('Spam Honeypot', 'spam-honeypot'), 'manage_options', 'spam-honeypot', 'options_page_honeypot');
+function menu_honeypot()
+{
+    add_options_page(__('Honeypot Settings', 'spam-honeypot'), __('Spam Honeypot', 'spam-honeypot'), 'manage_options', 'spam-honeypot', 'options_page_honeypot');
 }
 
-function init_honeypot() {
-	register_setting('spam-honeypot', 'textarea_name');
-	register_setting('spam-honeypot', 'submit_name');
+function init_honeypot()
+{
+    register_setting('spam-honeypot', 'textarea_name');
+    register_setting('spam-honeypot', 'submit_name');
 }
 
-function add_action_link_honeypot($links, $file) {
-	if ($file == basename(__FILE__)) {
-array_unshift($links, '<a href="options-general.php?page=spam-honeypot">' . __('Settings','spam-honeypot') . '</a>');
-	}
-	return $links;
+function add_action_link_honeypot($links, $file)
+{
+    if ($file == basename(__FILE__)) {
+        array_unshift($links, '<a href="options-general.php?page=spam-honeypot">' . __('Settings','spam-honeypot') . '</a>');
+    }
+    return $links;
 }
 
-function register_honeypot() {
-	add_option('textarea_name', 'more_comment');
-	add_option('submit_name', '');
+function register_honeypot()
+{
+    add_option('textarea_name', 'more_comment');
+    add_option('submit_name', '');
 }
 
-function options_page_honeypot() {
+function options_page_honeypot()
+{
 ?>
 <div class="wrap">
 <h2><?php _e('Spam Honeypot Settings', 'spam-honeypot'); ?></h2>
@@ -66,26 +71,29 @@ add_action('comment_form', 'add_honeypot');
 add_action('plugins_loaded', 'load_honeypot_translation');
 add_filter('pre_comment_approved', 'check_honeypot');
 
-function add_honeypot($postID) {
-	$textarea_name = get_option('textarea_name');
-	echo '<p style="display:none">';
-	echo '<textarea name="' . $textarea_name . '" cols="100%" rows="10"></textarea>';
-	echo '<label  for="' . $textarea_name . '">' . __('If you are a human, do not fill in this field.','spam-honeypot') . '</label>';
-	echo '</p>';
-	
+function add_honeypot($postID)
+{
+    $textarea_name = get_option('textarea_name');
+    echo '<p style="display:none">';
+    echo '<textarea name="' . $textarea_name . '" cols="100%" rows="10"></textarea>';
+    echo '<label  for="' . $textarea_name . '">' . __('If you are a human, do not fill in this field.','spam-honeypot') . '</label>';
+    echo '</p>';
+    
 }
 
-function load_honeypot_translation() {
-	load_plugin_textdomain('spam-honeypot', false, dirname(plugin_basename(__FILE__)) . '/languages/');
+function load_honeypot_translation()
+{
+    load_plugin_textdomain('spam-honeypot', false, dirname(plugin_basename(__FILE__)) . '/languages/');
 }
 
-function check_honeypot($approved) {
-	$textarea_name = get_option('textarea_name');
-	$submit_name = get_option('submit_name');
-	if (!empty($_POST[$textarea_name]) // Bot filled out the hidden textarea
-	    || (!empty($submit_name) // User specified a value for the submit button
-	    && empty($_POST[$submit_name]))) { // Bot didn't include a value for the submit button 
-		$approved = 'spam';
-	}
-	return $approved;
+function check_honeypot($approved)
+{
+    $textarea_name = get_option('textarea_name');
+    $submit_name = get_option('submit_name');
+    if (!empty($_POST[$textarea_name]) // Bot filled out the hidden textarea
+        || (!empty($submit_name) // User specified a value for the submit button
+        && empty($_POST[$submit_name]))) { // Bot didn't include a value for the submit button 
+        $approved = 'spam';
+    }
+    return $approved;
 }
