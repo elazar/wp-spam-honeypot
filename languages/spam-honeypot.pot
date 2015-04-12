@@ -1,10 +1,10 @@
-# Copyright (C) 2015 Spam Honey Pot
-# This file is distributed under the same license as the Spam Honey Pot package.
+# Copyright (C) 2015 Spam Honeypot
+# This file is distributed under the same license as the Spam Honeypot package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Spam Honey Pot 1.1.0\n"
+"Project-Id-Version: Spam Honeypot 1.1.0\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/support/plugin/spam-honeypot\n"
-"POT-Creation-Date: 2015-04-12 15:25:18+00:00\n"
+"POT-Creation-Date: 2015-04-12 15:29:49+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -52,7 +52,7 @@ msgid "If you are a human, do not fill in this field."
 msgstr ""
 
 #. Plugin Name of the plugin/theme
-msgid "Spam Honey Pot"
+msgid "Spam Honeypot"
 msgstr ""
 
 #. Plugin URI of the plugin/theme

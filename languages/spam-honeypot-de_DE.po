@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Spam Honey Pot\n"
+"Project-Id-Version: Spam Honeypot\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/support/plugin/spam-honeypot\n"
-"POT-Creation-Date: 2015-04-12 15:25:18+00:00\n"
+"POT-Creation-Date: 2015-04-12 15:29:49+00:00\n"
 "PO-Revision-Date: 2013-05-08 07:14+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -65,8 +65,8 @@ msgid "If you are a human, do not fill in this field."
 msgstr "Wenn du ein Mensch bist, füll dieses Feld nicht aus."
 
 #. Plugin Name of the plugin/theme
-msgid "Spam Honey Pot"
-msgstr "Spam Honey Pot"
+msgid "Spam Honeypot"
+msgstr "Spam Honeypot"
 
 #. Plugin URI of the plugin/theme
 msgid "https://wordpress.org/plugins/spam-honeypot/"
