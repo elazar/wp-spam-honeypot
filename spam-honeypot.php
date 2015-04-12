@@ -7,6 +7,8 @@ Description: Adds a hidden text field to the comment form to trap spam bots.
 Version: 1.0.0
 Author: Matthew Turland
 Author URI: http://matthewturland.com
+Text Domain: spam-honeypot
+Domain Path: /languages/
 */
 
 if (is_admin()) {
@@ -35,11 +37,9 @@ array_unshift($links, '<a href="options-general.php?page=spam-honeypot">' . __('
 function register_honeypot() {
 	add_option('textarea_name', 'more_comment');
 	add_option('submit_name', '');
-	load_plugin_textdomain( 'spam-honeypot', WP_PLUGIN_DIR .'/wp-spam-honeypot/languages', '/wp-spam-honeypot/languages' );
 }
 
 function options_page_honeypot() {
-load_plugin_textdomain( 'spam-honeypot', WP_PLUGIN_DIR .'/wp-spam-honeypot/languages', '/wp-spam-honeypot/languages' );
 ?>
 <div class="wrap">
 <h2>Spam Honeypot Settings</h2>
@@ -63,16 +63,20 @@ load_plugin_textdomain( 'spam-honeypot', WP_PLUGIN_DIR .'/wp-spam-honeypot/langu
 }
 
 add_action('comment_form', 'add_honeypot');
+add_action('plugins_loaded', 'load_honeypot_translation');
 add_filter('pre_comment_approved', 'check_honeypot');
 
 function add_honeypot($postID) {
-	load_plugin_textdomain( 'spam-honeypot', WP_PLUGIN_DIR .'/wp-spam-honeypot/languages', '/wp-spam-honeypot/languages' );
 	$textarea_name = get_option('textarea_name');
 	echo '<p style="display:none">';
 	echo '<textarea name="' . $textarea_name . '" cols="100%" rows="10"></textarea>';
 	echo '<label  for="' . $textarea_name . '">' . __('If you are a human, do not fill in this field.','spam-honeypot') . '</label>';
 	echo '</p>';
 	
+}
+
+function load_honeypot_translation() {
+	load_plugin_textdomain('spam-honeypot', false, dirname(plugin_basename(__FILE__)) . '/languages/');
 }
 
 function check_honeypot($approved) {
