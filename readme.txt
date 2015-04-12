@@ -2,7 +2,7 @@
 Contributors: tobias382
 Tags: comments, spam
 Requires at least: 2.9.0
-Tested up to: 2.9.1
+Tested up to: 4.1.1
 Stable tag: 1.1.0 
 
 Adds a hidden text field to the comment form to trap spam bots.
