@@ -1,11 +1,12 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Spam Honey Pot\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-07 17:40+0100\n"
+"Project-Id-Version: Spam Honeypot\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/support/plugin/spam-honeypot\n"
+"POT-Creation-Date: 2015-04-12 15:55:32+00:00\n"
 "PO-Revision-Date: 2013-05-08 07:14+0100\n"
-"Last-Translator: \n"
+"Last-Translator: Matthias-Christian Ott <ott@mirix.org>\n"
 "Language-Team: \n"
+"Language: de_DE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -14,26 +15,79 @@ msgstr ""
 "X-Poedit-KeywordsList: __;_e\n"
 "X-Poedit-Basepath: ../\n"
 "X-Textdomain-Support: yes\n"
-"Language: de_DE\n"
 "X-Generator: Poedit 1.5.5\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: spam-honeypot.php:34
+#: spam-honeypot.php:22
+msgid "Honeypot Settings"
+msgstr "Spam Honeypot Einstellungen"
+
+#. #-#-#-#-#  spam-honeypot.pot (Spam Honeypot 1.1.0)  #-#-#-#-#
+#. Plugin Name of the plugin/theme
+#: spam-honeypot.php:22
+msgid "Spam Honeypot"
+msgstr "Spam Honeypot"
+
+#: spam-honeypot.php:32
 msgid "Settings"
 msgstr "Einstellungen"
 
-#: spam-honeypot.php:57
+#: spam-honeypot.php:45
+msgid "Spam Honeypot Settings"
+msgstr "Spam Honeypot Einstellungen"
+
+#: spam-honeypot.php:51
 msgid "Hidden Textarea Name:"
-msgstr ""
+msgstr "Name des versteckten Textfelds:"
 
-#: spam-honeypot.php:61
+#: spam-honeypot.php:52
+msgid ""
+"This field controls the name of a hidden (by CSS) textarea injected into "
+"your comment form by the plugin. If a bot fills this field out, the post "
+"will be tagged as spam."
+msgstr ""
+"Dieses Feld enthält den Namen des (mit CSS) verstecken Textfelds, das in das "
+"Kommentarformular eingefügt wird. Wenn ein Spambot das Feld ausfüllt, wird "
+"es als Spam marktiert."
+
+#: spam-honeypot.php:55
 msgid "Submit Button Name (optional):"
-msgstr ""
+msgstr "Name des Abschicken-Buttons (optional):"
 
-#: spam-honeypot.php:65
+#: spam-honeypot.php:56
+msgid ""
+"This field should be set to the value of the &quot;name&quot; attribute for "
+"the submit button in your comment form. If a bot does not include this in a "
+"form submission, the post will be tagged as spam. If this field is left "
+"blank, the check will not be conducted."
+msgstr ""
+"Dieses Feld sollte den Wert des Attributs &bdquo;name&ldquo; des Abschicken-"
+"Buttons des Kommentarformulars haben. Wenn ein Spambot diesen Wert nicht "
+"mitschickt, wird der Kommentar als Spam markiert. Wenn das Feld leer ist, "
+"wird der Wert nicht geprüft."
+
+#: spam-honeypot.php:59
 msgid "Update Options"
-msgstr ""
+msgstr "Änderungen übernehmen"
 
-#: spam-honeypot.php:82
+#: spam-honeypot.php:73
 msgid "If you are a human, do not fill in this field."
 msgstr "Wenn du ein Mensch bist, füll dieses Feld nicht aus."
+
+#. Plugin URI of the plugin/theme
+msgid "https://wordpress.org/plugins/spam-honeypot/"
+msgstr "https://wordpress.org/plugins/spam-honeypot/"
+
+#. Description of the plugin/theme
+msgid "Adds a hidden text field to the comment form to trap spam bots."
+msgstr ""
+"Fügt ein verstecktes Textfeld in das Kommentarfomular ein, um Spambots "
+"auszutricksen."
+
+#. Author of the plugin/theme
+msgid "Matthew Turland"
+msgstr "Matthew Turland"
+
+#. Author URI of the plugin/theme
+msgid "http://matthewturland.com"
+msgstr "http://matthewturland.com"
