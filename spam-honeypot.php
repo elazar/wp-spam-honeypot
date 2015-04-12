@@ -9,10 +9,6 @@ Author: Matthew Turland
 Author URI: http://matthewturland.com
 */
 
-/*
-ADMIN
-*/
-
 if (is_admin()) {
 	add_action('admin_menu', 'menu_honeypot');
 	add_action('admin_init', 'init_honeypot');
@@ -68,10 +64,6 @@ load_plugin_textdomain( 'spam-honeypot', WP_PLUGIN_DIR .'/wp-spam-honeypot/langu
 </div>
 <?php
 }
-
-/*
-MAIN
-*/
 
 add_action('comment_form', 'add_honeypot');
 add_filter('pre_comment_approved', 'check_honeypot');
