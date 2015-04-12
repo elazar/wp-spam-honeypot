@@ -4,13 +4,23 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Spam Honeypot 1.1.0\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/support/plugin/spam-honeypot\n"
-"POT-Creation-Date: 2015-04-12 15:29:49+00:00\n"
+"POT-Creation-Date: 2015-04-12 15:55:32+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "PO-Revision-Date: 2015-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+
+#: spam-honeypot.php:22
+msgid "Honeypot Settings"
+msgstr ""
+
+#. #-#-#-#-#  spam-honeypot.pot (Spam Honeypot 1.1.0)  #-#-#-#-#
+#. Plugin Name of the plugin/theme
+#: spam-honeypot.php:22
+msgid "Spam Honeypot"
+msgstr ""
 
 #: spam-honeypot.php:32
 msgid "Settings"
@@ -49,10 +59,6 @@ msgstr ""
 
 #: spam-honeypot.php:73
 msgid "If you are a human, do not fill in this field."
-msgstr ""
-
-#. Plugin Name of the plugin/theme
-msgid "Spam Honeypot"
 msgstr ""
 
 #. Plugin URI of the plugin/theme

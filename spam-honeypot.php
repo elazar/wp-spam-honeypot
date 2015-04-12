@@ -19,7 +19,7 @@ if (is_admin()) {
 }
 
 function menu_honeypot() {
-	add_options_page('Honeypot Settings', 'Spam Honeypot', 'manage_options', 'spam-honeypot', 'options_page_honeypot');
+	add_options_page(__('Honeypot Settings', 'spam-honeypot'), __('Spam Honeypot', 'spam-honeypot'), 'manage_options', 'spam-honeypot', 'options_page_honeypot');
 }
 
 function init_honeypot() {
