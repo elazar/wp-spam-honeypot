@@ -91,9 +91,12 @@ function check_honeypot($approved)
     $textarea_name = get_option('textarea_name');
     $submit_name = get_option('submit_name');
     if ($textarea_name !== false && submit_name !== false) {
-        if (!empty($_POST[$textarea_name]) // Bot filled out the hidden textarea
-            || (!empty($submit_name) // User specified a value for the submit button
-            && empty($_POST[$submit_name]))) { // Bot didn't include a value for the submit button 
+        // A bot filled out the hidden textarea.
+        $textarea_filled_out = !empty($_POST[$textarea_name]);
+        // The User specified a value for the submit button and a bot didn't
+        // include a value for the submit button.
+        $submit_name_missing = !empty($submit_name) && empty($_POST[$submit_name]);
+        if ($textarea_filled_out || $submit_name_missing) {
             $approved = 'spam';
         }
     }
