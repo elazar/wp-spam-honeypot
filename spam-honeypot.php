@@ -2,7 +2,7 @@
 
 /*
 Plugin Name: Spam Honey Pot
-Plugin URI: http://wordpress.org/extend/plugins/spam-honeypot
+Plugin URI: https://wordpress.org/plugins/spam-honeypot/
 Description: Adds a hidden text field to the comment form to trap spam bots.
 Version: 1.0.0
 Author: Matthew Turland
