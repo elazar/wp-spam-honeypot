@@ -32,7 +32,7 @@ function init_honeypot()
 function add_action_link_honeypot($links, $file)
 {
     if ($file == basename(__FILE__)) {
-        array_unshift($links, '<a href="options-general.php?page=spam-honeypot">' . __('Settings','spam-honeypot') . '</a>');
+        array_unshift($links, '<a href="options-general.php?page=spam-honeypot">' . esc_html__('Settings','spam-honeypot') . '</a>');
     }
     return $links;
 }
@@ -47,21 +47,21 @@ function options_page_honeypot()
 {
 ?>
 <div class="wrap">
-<h2><?php _e('Spam Honeypot Settings', 'spam-honeypot'); ?></h2>
+<h2><?php esc_html_e('Spam Honeypot Settings', 'spam-honeypot'); ?></h2>
 <form method="post" action="options.php">
 <?php wp_nonce_field('update-options'); ?>
 <?php settings_fields('spam-honeypot'); ?>
 <table class="form-table">
 <tr valign="top">
-<th scope="row"><?php _e('Hidden Textarea Name:', 'spam-honeypot'); ?></th>
-<td><input type="text" id="textarea_name" name="textarea_name" value="<?php echo get_option('textarea_name'); ?>" title="<?php _e('This field controls the name of a hidden (by CSS) textarea injected into your comment form by the plugin. If a bot fills this field out, the post will be tagged as spam.', 'spam-honeypot'); ?>"></td>
+<th scope="row"><?php esc_html_e('Hidden Textarea Name:', 'spam-honeypot'); ?></th>
+<td><input type="text" id="textarea_name" name="textarea_name" value="<?php echo esc_attr(get_option('textarea_name')); ?>" title="<?php esc_attr_e('This field controls the name of a hidden (by CSS) textarea injected into your comment form by the plugin. If a bot fills this field out, the post will be tagged as spam.', 'spam-honeypot'); ?>"></td>
 </tr>
 <tr valign="top">
-<th scope="row"><?php _e('Submit Button Name (optional):', 'spam-honeypot'); ?></th>
-<td><input type="text" id="submit_name" name="submit_name" value="<?php echo get_option('submit_name'); ?>" title="<?php _e('This field should be set to the value of the &quot;name&quot; attribute for the submit button in your comment form. If a bot does not include this in a form submission, the post will be tagged as spam. If this field is left blank, the check will not be conducted.', 'spam-honeypot'); ?>"></td>
+<th scope="row"><?php esc_html_e('Submit Button Name (optional):', 'spam-honeypot'); ?></th>
+<td><input type="text" id="submit_name" name="submit_name" value="<?php esc_attr(get_option('submit_name')); ?>" title="<?php esc_attr_e('This field should be set to the value of the &quot;name&quot; attribute for the submit button in your comment form. If a bot does not include this in a form submission, the post will be tagged as spam. If this field is left blank, the check will not be conducted.', 'spam-honeypot'); ?>"></td>
 </tr>
 </table>
-<p class="submit"><input type="submit" class="button-primary" value="<?php echo __('Update Options','spam-honeypot'); ?>"></p>
+<p class="submit"><input type="submit" class="button-primary" value="<?php esc_attr_e('Update Options','spam-honeypot'); ?>"></p>
 </form>
 </div>
 <?php
@@ -75,8 +75,8 @@ function add_honeypot($postID)
 {
     $textarea_name = get_option('textarea_name');
     echo '<p style="display:none">';
-    echo '<textarea name="' . $textarea_name . '" cols="100%" rows="10"></textarea>';
-    echo '<label  for="' . $textarea_name . '">' . __('If you are a human, do not fill in this field.','spam-honeypot') . '</label>';
+    echo '<textarea name="' . esc_attr($textarea_name) . '" cols="100%" rows="10"></textarea>';
+    echo '<label  for="' . esc_attr($textarea_name) . '">' . esc_html__('If you are a human, do not fill in this field.','spam-honeypot') . '</label>';
     echo '</p>';
     
 }
