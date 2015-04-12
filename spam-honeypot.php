@@ -14,7 +14,7 @@ Domain Path: /languages/
 if (is_admin()) {
     add_action('admin_menu', 'menu_honeypot');
     add_action('admin_init', 'init_honeypot');
-    add_filter('plugin_action_links', 'add_action_link_honeypot', 10, 2);
+    add_filter('plugin_action_links_' . plugin_basename(__FILE__), 'add_action_links_honeypot', 10, 2);
     register_activation_hook(__FILE__, 'register_honeypot');
 }
 
@@ -29,11 +29,10 @@ function init_honeypot()
     register_setting('spam-honeypot', 'submit_name');
 }
 
-function add_action_link_honeypot($links, $file)
+function add_action_links_honeypot($links)
 {
-    if ($file == basename(__FILE__)) {
-        array_unshift($links, '<a href="options-general.php?page=spam-honeypot">' . esc_html__('Settings','spam-honeypot') . '</a>');
-    }
+    $settings_link = '<a href="' . esc_url(admin_page('options-general.php?page=spam-honeypot')) . '">' . esc_html__('Settings', 'spam-honeypot') . '</a>';
+    array_unshift($links, $settings_link);
     return $links;
 }
 
