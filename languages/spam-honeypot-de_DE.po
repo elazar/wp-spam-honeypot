@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Spam Honeypot\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/support/plugin/spam-honeypot\n"
-"POT-Creation-Date: 2015-04-12 15:29:49+00:00\n"
+"POT-Creation-Date: 2015-04-12 15:55:32+00:00\n"
 "PO-Revision-Date: 2013-05-08 07:14+0100\n"
 "Last-Translator: Matthias-Christian Ott <ott@mirix.org>\n"
 "Language-Team: \n"
@@ -17,6 +17,16 @@ msgstr ""
 "X-Textdomain-Support: yes\n"
 "X-Generator: Poedit 1.5.5\n"
 "X-Poedit-SearchPath-0: .\n"
+
+#: spam-honeypot.php:22
+msgid "Honeypot Settings"
+msgstr "Spam Honeypot Einstellungen"
+
+#. #-#-#-#-#  spam-honeypot.pot (Spam Honeypot 1.1.0)  #-#-#-#-#
+#. Plugin Name of the plugin/theme
+#: spam-honeypot.php:22
+msgid "Spam Honeypot"
+msgstr "Spam Honeypot"
 
 #: spam-honeypot.php:32
 msgid "Settings"
@@ -63,10 +73,6 @@ msgstr "Änderungen übernehmen"
 #: spam-honeypot.php:73
 msgid "If you are a human, do not fill in this field."
 msgstr "Wenn du ein Mensch bist, füll dieses Feld nicht aus."
-
-#. Plugin Name of the plugin/theme
-msgid "Spam Honeypot"
-msgstr "Spam Honeypot"
 
 #. Plugin URI of the plugin/theme
 msgid "https://wordpress.org/plugins/spam-honeypot/"
